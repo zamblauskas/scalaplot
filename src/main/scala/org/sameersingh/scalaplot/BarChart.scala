@@ -69,6 +69,8 @@ class BarChart(chartTitle: Option[String], val data: BarData,
   def this(chartTitle: String, data: BarData) = this(Some(chartTitle), data)
 
   def this(data: BarData) = this(None, data)
+
+  override def title = chartTitle
 }
 
 trait BarSeriesImplicits {
