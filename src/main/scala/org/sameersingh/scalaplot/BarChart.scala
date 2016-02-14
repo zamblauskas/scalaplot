@@ -65,7 +65,9 @@ class BarData(val names: (Int) => String = _.toString,
 
 
 class BarChart(chartTitle: Option[String], val data: BarData,
+               val style: HistogramStyle.Type = HistogramStyle.Cluster,
                val x: DiscreteAxis = new DiscreteAxis, val y: NumericAxis = new NumericAxis) extends Chart {
+
   def this(chartTitle: String, data: BarData) = this(Some(chartTitle), data)
 
   def this(data: BarData) = this(None, data)
@@ -194,9 +196,10 @@ trait BarChartImplicits extends BarDataImplicits {
                legendPosY: LegendPosY.Type = LegendPosY.Center,
                showLegend: Boolean = false,
                monochrome: Boolean = false,
-               size: Option[(Double, Double)] = None
+               size: Option[(Double, Double)] = None,
+               style: HistogramStyle.Type = HistogramStyle.Cluster
                 ): BarChart = {
-    val c = new BarChart(GlobalImplicits.stringToOptionString(title), data, {
+    val c = new BarChart(GlobalImplicits.stringToOptionString(title), data, style, {
       val d = new DiscreteAxis();
       d.label = xLabel;
       d
