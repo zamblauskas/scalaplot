@@ -194,6 +194,7 @@ trait BarChartImplicits extends BarDataImplicits {
                pointSize: Option[Double] = None,
                legendPosX: LegendPosX.Type = LegendPosX.Right,
                legendPosY: LegendPosY.Type = LegendPosY.Center,
+               legendPosRegion: LegendPosRegion.Type = LegendPosRegion.Inside,
                showLegend: Boolean = false,
                monochrome: Boolean = false,
                size: Option[(Double, Double)] = None,
@@ -207,6 +208,7 @@ trait BarChartImplicits extends BarDataImplicits {
     c.pointSize = pointSize
     c.legendPosX = legendPosX
     c.legendPosY = legendPosY
+    c.legendPosRegion = legendPosRegion
     c.showLegend = showLegend
     c.monochrome = monochrome
     c.size = size

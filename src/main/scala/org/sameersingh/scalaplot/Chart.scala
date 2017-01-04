@@ -17,6 +17,8 @@ abstract class Chart {
 
   var legendPosY: LegendPosY.Type = LegendPosY.Center
 
+  var legendPosRegion: LegendPosRegion.Type = LegendPosRegion.Inside
+
   var showLegend: Boolean = false
 
   var monochrome: Boolean = false
@@ -34,3 +36,7 @@ object LegendPosY extends Enumeration {
   val Top, Center, Bottom = Value
 }
 
+object LegendPosRegion extends Enumeration {
+  type Type = Value
+  val Inside, Outside = Value
+}
