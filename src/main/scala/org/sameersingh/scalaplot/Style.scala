@@ -24,4 +24,9 @@ object Style {
     type Type = Value
     val Empty, Solid, Pattern = Value
   }
+
+  object HistogramStyle extends Enumeration {
+    type Type = Value
+    val Cluster, RowStacked = Value
+  }
 }

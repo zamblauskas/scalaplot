@@ -1,5 +1,6 @@
 package org.sameersingh.scalaplot.gnuplot
 
+import org.sameersingh.scalaplot.Style.HistogramStyle.{RowStacked, Cluster}
 import org.sameersingh.scalaplot._
 import collection.mutable.ArrayBuffer
 import java.io.{InputStreamReader, BufferedReader, File, PrintWriter}
@@ -112,6 +113,13 @@ class GnuplotPlotter(chart: Chart) extends Plotter(chart) {
     sb.toString
   }
 
+  protected def getHistogramStyle(s: HistogramStyle.Type): String = {
+    s match {
+      case Cluster => "cluster gap 1"
+      case RowStacked => "rowstacked"
+    }
+  }
+
   def plotChart(chart: Chart, defaultTerminal: String = "dumb") {
     lines += "# Chart settings"
     chart.title.foreach(t => lines += "set title \"%s\"" format (t))
@@ -133,13 +141,13 @@ class GnuplotPlotter(chart: Chart) extends Plotter(chart) {
     lines += "set yr [%s:%s] %sreverse" format(yr1s, yr2s, if (chart.y.isBackward) "" else "no")
     lines += "set xlabel \"%s\"" format (chart.x.label)
     lines += "set ylabel \"%s\"" format (chart.y.label)
+    lines += "set style histogram %s" format (getHistogramStyle(chart.style))
     plotBarData(chart.data)
   }
 
   def plotBarData(data: BarData) {
     lines += "# BarData Plotting"
     lines += "set style data histogram"
-    lines += "set style histogram cluster gap 1"
     lines += "set style fill solid border -1"
     lines += "plot \\"
     var index = 0
