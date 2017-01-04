@@ -7,6 +7,7 @@ Changes
 ===================================
 
 * Choose BarChar type - clustered or stacked
+* Choose legend region - inside or outside
 
 Package
 ===================================
