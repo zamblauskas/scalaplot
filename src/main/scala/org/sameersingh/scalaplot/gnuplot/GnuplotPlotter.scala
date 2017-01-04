@@ -126,7 +126,7 @@ class GnuplotPlotter(chart: Chart) extends Plotter(chart) {
     chart.pointSize.foreach(t => lines += "set pointSize %f" format (t))
     // legend
     if (chart.showLegend) {
-      lines += "set key %s %s" format(chart.legendPosX.toString.toLowerCase, chart.legendPosY.toString.toLowerCase)
+      lines += "set key %s %s %s" format(chart.legendPosX.toString.toLowerCase, chart.legendPosY.toString.toLowerCase, chart.legendPosRegion.toString.toLowerCase)
     } else lines += "unset key"
     lines += "set terminal " + defaultTerminal
     lines += ""
