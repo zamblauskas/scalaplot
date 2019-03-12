@@ -5,7 +5,7 @@ import javax.swing.JFrame
 import org.jfree.chart.{JFreeChart => JChart, ChartPanel, ChartFactory, ChartUtilities}
 import org.jfree.data.xy.{XYSeries => XYS}
 import org.jfree.data.xy.XYSeriesCollection
-import com.itextpdf.text.pdf.DefaultFontMapper
+import com.itextpdf.awt.DefaultFontMapper
 import java.io.{FileOutputStream, BufferedOutputStream}
 import com.itextpdf.text.Rectangle
 import com.itextpdf.text.Document
